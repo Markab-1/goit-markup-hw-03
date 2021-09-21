@@ -12,6 +12,9 @@
   --text-color-dark: #212121; /* Цвет текста  (серый потемнее) */
   --text-color-light: #757575; /* Цвет текста  (серый посветлее) */
   --button-bkg-color: #f5f4fa; /* Цвет фона кнопок фильтра в неактивном состоянии*/
+  --section-color: #f5f4fa;
+  --border-color: #ececec;
+  --card-gap: 30px;
 }
 
 body {
@@ -22,15 +25,76 @@ body {
   line-height: 1.71; /*(line-height: 24 px;)*/
 }
 
+.container {
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/*html {
+  box-sizing: border-box;
+}*/
+
+/* *,
+*::before,
+*::after {
+  box-sizing: inherit;
+}*/
+
 .link {
   text-decoration: none;
 }
 
 .list {
+  padding: 0px;
+  margin: 0px;
   list-style: none;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 /*   HEADER  */
+
+.header {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-contacts {
+  display: flex;
+  margin-left: auto;
+}
+
+.main-contacts .item:not(:last-child) {
+  margin-right: 50px;
+}
+
+.header-inline {
+  display: flex;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
 
 .logo {
   font-family: Raleway, sans-serif;
@@ -40,14 +104,20 @@ body {
   color: var(--other-logo-color);
   letter-spacing: 0.03em;
   text-decoration: none;
+  padding-right: 93px;
 }
 
 .logo-blue {
   color: var(--logo-color-blue);
 }
 
-.logo-footer {
-  color: var(--logo-color-footer);
+.site-nav,
+.site-nav .items {
+  display: flex;
+}
+
+.site-nav .item:not(:last-child) {
+  margin-right: 50px;
 }
 
 .site-nav .link {
@@ -82,6 +152,9 @@ body {
 
 .hero {
   background-color: var(--sub-bkg-color);
+  text-align: center;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 .hero-title {
@@ -91,9 +164,16 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-white);
+  margin-bottom: 30px;
 }
 
 .hero-button {
+  display: inline-block;
+  min-width: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+
   font-family: inherit;
   font-weight: 700;
   font-size: 16px;
@@ -107,12 +187,35 @@ body {
 }
 
 /* OTHER SECTIONS */
+.features-section {
+  padding-top: 94px;
+}
+
+.section {
+  padding-top: 94px;
+  padding-bottom: 94px;
+}
+
+.section:nth-child(2n + 0) {
+  background-color: var(--section-color);
+}
 
 .section-title {
   font-weight: 700;
   font-size: 36px;
   line-height: 1.16;
   color: var(--text-color-dark);
+  margin-bottom: 50px;
+}
+
+.features-list,
+.occupation-list,
+.team-list {
+  display: flex;
+}
+
+.features-list .item {
+  width: 270px;
 }
 
 .features-title {
@@ -120,10 +223,24 @@ body {
   line-height: 1.14;
   text-transform: uppercase;
   color: var(--text-color-dark);
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .features-par {
   color: var(--text-color-light);
+  text-align: left;
+}
+
+.features-list .item:not(:last-child),
+.occupation-list .item:not(:last-child),
+.team-list .item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.team-list .item {
+  background-color: var(--color-white);
+  padding-bottom: 30px;
 }
 
 .team-member-name {
@@ -131,15 +248,35 @@ body {
   font-size: 16px;
   line-height: 1.19;
   color: var(--text-color-dark);
+  margin-top: 30px;
 }
 
 .team-member-description {
   font-size: 16px;
   line-height: 1.19;
   color: var(--text-color-light);
+  margin-top: 10px;
 }
 
 /* PORTFOLIO.html */
+
+.filter {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.filter .item:not(:last-child) {
+  margin-right: 8px;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: calc(-1 * var(--card-gap));
+  margin-top: calc(-1 * var(--card-gap));
+}
 
 .filter-button {
   font-family: inherit;
@@ -150,6 +287,7 @@ body {
   border-radius: 4px;
   border: 0;
   cursor: pointer;
+  padding: 6px 22px;
 }
 
 .filter-button:hover,
@@ -164,18 +302,45 @@ body {
   line-height: 2;
   letter-spacing: 0.06em;
   color: var(--text-color-dark);
+  text-align: left;
 }
 
 .projects-par {
   font-size: 16px;
   line-height: 1.87;
   color: var(--text-color-light);
+  margin-top: 4px;
+  text-align: left;
+}
+
+.projects-content {
+  padding: 20px 24px;
+}
+
+.projects > .item {
+  flex-basis: calc(100% / 3 - 1 * var(--card-gap));
+  margin-left: var(--card-gap);
+  margin-top: var(--card-gap);
 }
 
 /*  FOOTER   */
 
+.logo-footer {
+  color: var(--logo-color-footer);
+}
+
 .footer {
   background-color: var(--sub-bkg-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.footer .container {
+  text-align: left;
+}
+
+.footer .logo {
+  margin-bottom: 20px; /*  Почему не работает???  Я хотела так отступить адрес от логотипа */
 }
 
 .address {
@@ -184,7 +349,15 @@ body {
   color: var(--color-white);
 }
 
+.footer-address {
+  margin-top: 20px;
+}
+
 .footer-contacts {
   font-style: normal;
   color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-address .item:not(:last-child) {
+  margin-bottom: 9px;
 }
