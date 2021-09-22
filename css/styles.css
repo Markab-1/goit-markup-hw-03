@@ -31,7 +31,6 @@ body {
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 
 /*html {
@@ -48,7 +47,7 @@ body {
   text-decoration: none;
 }
 
-.list {
+ul {
   padding: 0px;
   margin: 0px;
   list-style: none;
@@ -67,6 +66,17 @@ h6 {
 img {
   display: block;
   max-width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
 }
 
 /*   HEADER  */
@@ -104,7 +114,7 @@ img {
   color: var(--other-logo-color);
   letter-spacing: 0.03em;
   text-decoration: none;
-  padding-right: 93px;
+  margin-right: 93px;
 }
 
 .logo-blue {
@@ -112,11 +122,11 @@ img {
 }
 
 .site-nav,
-.site-nav .items {
+.navigation {
   display: flex;
 }
 
-.site-nav .item:not(:last-child) {
+.navigation-item:not(:last-child) {
   margin-right: 50px;
 }
 
@@ -187,18 +197,19 @@ img {
 }
 
 /* OTHER SECTIONS */
-.features-section {
-  padding-top: 94px;
-}
 
 .section {
   padding-top: 94px;
   padding-bottom: 94px;
 }
 
-.section:nth-child(2n + 0) {
-  background-color: var(--section-color);
+.features-section {
+  padding-bottom: 0px;
 }
+
+/*.section:nth-child(2n + 0) {
+  background-color: var(--section-color);
+} */
 
 .section-title {
   font-weight: 700;
@@ -206,16 +217,17 @@ img {
   line-height: 1.16;
   color: var(--text-color-dark);
   margin-bottom: 50px;
+  text-align: center;
 }
 
 .features-list,
-.occupation-list,
-.team-list {
+.team-list,
+.occupation-list {
   display: flex;
-}
+  flex-wrap: wrap;
 
-.features-list .item {
-  width: 270px;
+  margin-left: calc(-1 * var(--card-gap));
+  margin-top: calc(-1 * var(--card-gap));
 }
 
 .features-title {
@@ -232,15 +244,26 @@ img {
   text-align: left;
 }
 
-.features-list .item:not(:last-child),
-.occupation-list .item:not(:last-child),
-.team-list .item:not(:last-child) {
-  margin-right: 30px;
+.features-list-item {
+  flex-basis: calc(100% / 4 - 1 * var(--card-gap));
+  margin-left: var(--card-gap);
+  margin-top: var(--card-gap);
 }
 
-.team-list .item {
-  background-color: var(--color-white);
-  padding-bottom: 30px;
+.occupation-list-item {
+  flex-basis: calc(100% / 3 - 1 * var(--card-gap));
+  margin-left: var(--card-gap);
+  margin-top: var(--card-gap);
+}
+
+.team-list-item {
+  flex-basis: calc(100% / 4 - 1 * var(--card-gap));
+  margin-left: var(--card-gap);
+  margin-top: var(--card-gap);
+}
+
+.team-section {
+  background-color: var(--section-color);
 }
 
 .team-member-name {
@@ -248,7 +271,7 @@ img {
   font-size: 16px;
   line-height: 1.19;
   color: var(--text-color-dark);
-  margin-top: 30px;
+  text-align: center;
 }
 
 .team-member-description {
@@ -256,6 +279,12 @@ img {
   line-height: 1.19;
   color: var(--text-color-light);
   margin-top: 10px;
+  text-align: center;
+}
+
+.team-card-description {
+  padding: 30px 0px;
+  background-color: var(--color-white);
 }
 
 /* PORTFOLIO.html */
@@ -266,7 +295,7 @@ img {
   justify-content: center;
 }
 
-.filter .item:not(:last-child) {
+.filter-item:not(:last-child) {
   margin-right: 8px;
 }
 
@@ -317,7 +346,7 @@ img {
   padding: 20px 24px;
 }
 
-.projects > .item {
+.projects-item {
   flex-basis: calc(100% / 3 - 1 * var(--card-gap));
   margin-left: var(--card-gap);
   margin-top: var(--card-gap);
@@ -335,12 +364,12 @@ img {
   padding-bottom: 60px;
 }
 
-.footer .container {
-  text-align: left;
+.footer .logo {
+  margin-right: 0px;
 }
 
-.footer .logo {
-  margin-bottom: 20px; /*  Почему не работает???  Я хотела так отступить адрес от логотипа */
+.footer .container {
+  text-align: left;
 }
 
 .address {
